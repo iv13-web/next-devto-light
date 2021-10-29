@@ -1,8 +1,8 @@
 import {createContext} from 'react'
-import firebase from 'firebase/app'
+import {IUser} from '../types'
 
 type ContextProps = {
-	user: firebase.User | null
+	user: IUser | null
 	username: string | null
 }
 

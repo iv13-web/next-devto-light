@@ -14,7 +14,7 @@ const UsernameMessage: FC<Props> = ({ username, isValid, loading}) => {
 		return <p className='text-success'>{username} is available</p>
 	}
 	if (username && username?.length < 3) {
-		return <p className='text-danger'>Username should be at least 3 characters long</p>
+		return <p className='text-danger'>Username should be at least 3 characters long (English letters or numbers 🤝)</p>
 	}
 	if (username && !isValid) {
 		return <p className='text-danger'>This username is already taken</p>

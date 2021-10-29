@@ -7,6 +7,7 @@
   --color-red: #df3b3b;
   --color-green: #3bdf72;
   --color-gray: #b5bdc4;
+  --color-gray-light: #cad5e1;
 }
 html,
 body {
@@ -65,7 +66,7 @@ code {
   height: 70px;
   width: 100%;
   background: white;
-  color: var(--colors-text);
+  color: var(--color-text);
   position: fixed;
   top: 0;
   padding: 0 10vw;
@@ -84,16 +85,20 @@ code {
   height: 100%;
 }
 
+.avatar {
+  flex-shrink: 0;
+}
+
 .navbar img {
   border-radius: 50%;
   width: 50px;
   height: 50px;
   cursor: pointer;
+  display: block;
 }
 
 .navbar li {
   border-radius: 50%;
-
 }
 
 /* Buttons */
@@ -166,6 +171,12 @@ button.btn-logo {
   padding: 0.5rem 1rem;
 }
 
+@media (max-width: 768px) {
+  button.btn-logo {
+    font-size: .8rem;
+  }
+}
+
 /* Cards */
 
 .card {
@@ -176,8 +187,14 @@ button.btn-logo {
   border-radius: 8px;
 }
 
+.card:hover {
+  cursor: pointer;
+  background-color: var(--color-gray-light);
+}
+
 .card footer {
   display: flex;
+  justify-content: space-between;
 }
 
 .card-img-center {
@@ -191,6 +208,12 @@ button.btn-logo {
 .card-info {
   color: white;
   background: var(--color-blue);
+}
+
+@media (max-width: 480px) {
+  .card span {
+    font-size: .8rem;
+  }
 }
 
 /* Loader */
@@ -227,6 +250,14 @@ input[type="file"] {
 
 .push-left {
   margin-left: auto;
+}
+
+.text-hover:hover {
+  color: var(--color-red);
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-sm {

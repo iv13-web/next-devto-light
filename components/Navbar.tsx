@@ -31,9 +31,9 @@ const Navbar = ({}) => {
 								<button className="btn-blue">Write Posts</button>
 							</Link>
 						</li>
-						<li>
+						<li className='avatar'>
 							<Link href={`/${username}`}>
-								<img src={user?.photoURL || '/hacker.png'} />
+								<img src={user?.photoURL || '/hacker.png'}/>
 							</Link>
 						</li>
 					</>
