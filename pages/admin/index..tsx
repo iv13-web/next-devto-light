@@ -1,9 +1,8 @@
 
-
 const AdminPage = ({ }) => {
 
 	return (
-		<h1>Enter</h1>
+		null
 	)
 }
 
