@@ -2,6 +2,7 @@ import {FC, useContext} from 'react'
 import {auth, googleAuthProvider} from '../lib/firebase'
 import {UserContext} from '../context/context'
 import UsernameForm from '../components/UsernameForm'
+import Paper from '../components/Paper'
 
 const Signup: FC = ({}) => {
 	const {user, username} = useContext(UserContext)
@@ -22,9 +23,11 @@ function SignInButton() {
 		await auth.signInWithPopup(googleAuthProvider)
 	}
 	return (
-		<button className='btn-google' onClick={signInWithGoogle}>
-			<img src='/google.png'/> Sign in with Google
-		</button>
+		<Paper>
+			<button className='btn-google' onClick={signInWithGoogle}>
+				<img src='/google.png'/> Sign in with Google
+			</button>
+		</Paper>
 	)
 }
 

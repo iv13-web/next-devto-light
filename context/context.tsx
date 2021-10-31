@@ -1,9 +1,12 @@
 import {createContext} from 'react'
-import {IUser} from '../types'
+import firebase from 'firebase/app'
 
 type ContextProps = {
-	user: IUser | null
+	user: firebase.User | null | undefined
 	username: string | null
 }
 
-export const UserContext = createContext<Partial<ContextProps>>({})
+export const UserContext = createContext<ContextProps>({
+	user: null,
+	username: null
+})

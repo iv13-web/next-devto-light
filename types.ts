@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 
-export interface IUser extends Omit<firebase.UserInfo, 'photoURL'> {
-	username: string | null | undefined
+export interface IUser extends Omit<firebase.User, 'photoURL'> {
+	username: string | null
 	photoURL: string | undefined
 }
 

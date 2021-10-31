@@ -1,4 +1,5 @@
 import type {NextPage} from 'next'
+import Head from 'next/head'
 import Loader from '../components/Loader'
 import {GetServerSideProps} from 'next'
 import {firestore, fromMillis, postToJSON} from '../lib/firebase'
@@ -56,12 +57,19 @@ const Home: NextPage<Props> = (props) => {
 	}
 
 	return (
-		<main>
-			<PostFeed posts={posts} admin={false}/>
-			{shouldShowBtn && <button onClick={getMorePosts}>Load more</button>}
-			{postsEnd && <p className='text-center'>You have reached the end! 👏</p>}
-			<Loader show={loading}/>
-		</main>
+		<>
+			<Head>
+				<title>NEXT DEV</title>
+				<meta property="og:title" content="My page title" key="title"/>
+				{/*<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css'/>*/}
+			</Head>
+			<main>
+				<PostFeed posts={posts} admin={false}/>
+				{shouldShowBtn && <button onClick={getMorePosts}>Load more</button>}
+				{postsEnd && <p className='text-center'>You have reached the end! 👏</p>}
+				<Loader show={loading}/>
+			</main>
+		</>
 	)
 }
 

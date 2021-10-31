@@ -13,7 +13,6 @@ type Props = {
 export const getServerSideProps: GetServerSideProps = async ({query}) => {
 	const {username} = query
 	const userDoc = await getUserWithUsername(username)
-
 	let user = null
 	let posts = null
 

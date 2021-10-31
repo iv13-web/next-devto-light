@@ -22,7 +22,7 @@ const PostItem: FC<Props> = ({post, admin = false}) => {
 		>
 			<Link href={`/${post.username}`}>
 				<a onClick={stopPropagation}>
-					<strong className='text-hover'>By @{post.username}</strong>
+					<p><strong className='text-hover'>By @{post.username}</strong></p>
 				</a>
 			</Link>
 			<h2>
