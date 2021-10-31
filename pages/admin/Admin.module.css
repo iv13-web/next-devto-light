@@ -1,0 +1,84 @@
+.container {
+  /*min-height: calc(100vh - var(--header-height) - 2rem - var(--body-indent));*/
+  display: flex;
+}
+
+.section {
+  width: 60vw;
+  margin-right: 1rem;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  min-width: 250px;
+  min-height: 200px;
+  text-align: center;
+  position: sticky;
+  top: 100px;
+  height: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+}
+
+.controls textarea {
+  height: 60vh;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.input {
+  outline: none;
+  border: none;
+  font-size: 2.5rem;
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.checkbox {
+  display: inline;
+  width: auto;
+  vertical-align: middle;
+  margin-left: 8px;
+  transform: scale(1.2);
+  height: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .section {
+    width: 100%;
+  }
+
+  .aside {
+    height: auto;
+    width: 100%;
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: auto;
+    justify-content: space-between;
+  }
+
+  .tools {
+    width: 100%;
+  }
+
+  .aside button {
+    flex-direction: row;
+    width: 47%;
+  }
+}

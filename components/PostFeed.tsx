@@ -1,7 +1,14 @@
 import PostItem from './PostItem'
 import {IPost} from '../types'
+import {FC} from 'react'
 
-const PostFeed: ({posts, admin}: { posts: IPost[]; admin: boolean }) => (JSX.Element | null) = ({posts, admin}) => {
+type PostFeedProps = {
+	posts: IPost[],
+	admin: boolean
+}
+
+// const PostFeed: ({posts, admin}: { posts: IPost[]; admin: boolean }) => (JSX.Element | null) = ({posts, admin}) => {
+const PostFeed: FC<PostFeedProps> = ({posts, admin}): (JSX.Element | null) => {
 
 	if (posts) {
 		return (

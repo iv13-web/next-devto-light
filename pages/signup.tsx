@@ -1,38 +1,37 @@
 import {FC, useContext} from 'react'
-import {auth, googleAuthProvider} from '../lib/firebase'
+import {auth, signInWithGoogle} from '../lib/firebase'
 import {UserContext} from '../context/context'
 import UsernameForm from '../components/UsernameForm'
-import Paper from '../components/Paper'
+import {Button} from '../components/UI/Button'
+import {SigninForm} from '../components/SigninForm'
 
 const Signup: FC = ({}) => {
 	const {user, username} = useContext(UserContext)
 
 	return (
 		<main>
-			{user ?
-				!username ? <UsernameForm/> : <SignOutButton/>
-				:
-				<SignInButton/>
+			{user
+				? !username ? <UsernameForm/> : <SignOutButton/> //сделать компонент регистрации внутри paper, а не только кнопку
+				: <SigninForm/>
 			}
 		</main>
 	)
 }
 
-function SignInButton() {
-	const signInWithGoogle = async () => {
-		await auth.signInWithPopup(googleAuthProvider)
-	}
+export function SignInButton() {
 	return (
-		<Paper>
-			<button className='btn-google' onClick={signInWithGoogle}>
-				<img src='/google.png'/> Sign in with Google
-			</button>
-		</Paper>
+		<Button
+			className='btn-google'
+			onClick={signInWithGoogle}
+			image='/google.png'
+		>
+			Sign in with Google
+		</Button>
 	)
 }
 
-function SignOutButton() {
-	return <button onClick={() => auth.signOut()}>Sign Out</button>
+export function SignOutButton() {
+	return <Button onClick={auth.signOut}>Sign Out</Button>
 }
 
 export default Signup

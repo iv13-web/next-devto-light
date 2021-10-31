@@ -12,7 +12,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
 		<UserContext.Provider value={userData}>
 			<Navbar/>
 			<Component {...pageProps} />
-			<Toaster/>
+			<Toaster position='top-right' reverseOrder={false}/>
 		</UserContext.Provider>
 	)
 }

@@ -9,7 +9,7 @@ const Navbar = ({}) => {
 	const router = useRouter()
 
 	const signOut =  () => {
-		void auth.signOut()
+		auth.signOut()
 		router.reload()
 	}
 
@@ -24,7 +24,7 @@ const Navbar = ({}) => {
 				{username && (
 					<>
 						<li className="push-left">
-							<button onClick={signOut}>Sign Out</button>
+							<button onClick={signOut} className='hide-mobile'>Sign Out</button>
 						</li>
 						<li>
 							<Link href="/admin">

@@ -13,14 +13,16 @@
   --color-gray: #b5bdc4;
   --color-gray-light: #cad5e1;
 
-  --header-height: 56px
+  --header-height: 56px;
+  --body-indent: 32px
 }
+
 html,
 body {
   font-family: 'Noto Sans', sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
-  margin-top: 50px;
+  margin-top: var(--body-indent);
 }
 
 main {
@@ -33,11 +35,28 @@ main {
   }
 }
 
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; }
-h2 { font-size: 1.25rem; }
-* { box-sizing: border-box; }
-img { max-width: 100%; }
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  margin-bottom: .5em;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
 
 a {
   color: inherit;
@@ -45,13 +64,29 @@ a {
   cursor: pointer;
 }
 
+p {
+  margin: 0;
+}
+
 input {
   display: inline-block;
   outline: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   width: 100%;
-  padding: 5px 10px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  height: 42px;
+}
+
+input::placeholder {
+  font-size: 1rem;
+  transition: color .2s ease;
+}
+
+input:focus::placeholder {
+  color: transparent;
 }
 
 fieldset {
@@ -81,7 +116,7 @@ code {
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 0 5vw;
+    padding: 0 4vw;
   }
 }
 
@@ -141,8 +176,9 @@ code {
   border-radius: 0.25rem;
   cursor: pointer;
   transition: all .1s ease;
-  /*margin: 0.5rem 1rem 0.5rem 0;*/
+  margin: 0.5rem 0.5rem 0.5rem 0;
   height: 42px;
+  font-size: clamp(0.8rem, 0.1765rem + 1.8824vw, 1rem);
 }
 
 button:hover {
@@ -150,7 +186,7 @@ button:hover {
 }
 
 button:disabled,
-button[disabled]{
+button[disabled] {
   filter: brightness(80%);
   cursor: not-allowed;
 }
@@ -192,6 +228,7 @@ button.btn-logo {
   button {
     padding: 0.5rem 1rem;
   }
+
   button.btn-logo {
     font-size: 1rem;
   }
@@ -219,9 +256,9 @@ button.btn-logo {
 }
 
 .card-img-center {
-  width:20%;
-  display:block;
-  margin:auto;
+  width: 20%;
+  display: block;
+  margin: auto;
   border-radius: 50%;
   max-width: 150px;
 }
@@ -250,8 +287,12 @@ button.btn-logo {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* File uploads */
@@ -267,6 +308,7 @@ input[type="file"] {
   padding: 5px;
   margin: 5px 0;
 }
+
 /* Utilities */
 
 .push-left {
@@ -283,6 +325,10 @@ input[type="file"] {
 
 .text-sm {
   font-size: 0.85rem;
+}
+
+.text-adaptive-header {
+  font-size: clamp(1.1rem, 0.425rem + 3vw, 2rem);
 }
 
 .text-danger {
@@ -312,4 +358,12 @@ input[type="file"] {
   text-align: center;
 }
 
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .hide-mobile {
+    display: none;
+  }
+}

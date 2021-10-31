@@ -7,7 +7,7 @@ export interface IUser extends Omit<firebase.User, 'photoURL'> {
 
 export interface IPost {
 	content: string
-	createdAt: string | number
+	createdAt: any
 	heartCount: number
 	published: boolean
 	slug: string
