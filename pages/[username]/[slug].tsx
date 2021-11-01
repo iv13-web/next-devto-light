@@ -1,11 +1,14 @@
 import {GetStaticProps, GetStaticPaths} from 'next'
 import {firestore, getUserWithUsername, postToJSON} from '../../lib/firebase'
 import {ParsedUrlQuery} from 'querystring'
-import s from './Post.module.css'
+import s from '../../styles/Post.module.css'
 import {FC} from 'react'
 import {useDocumentData} from 'react-firebase-hooks/firestore'
 import {IPost} from '../../types'
 import PostContent from '../../components/PostContent'
+import AuthCheck from '../../components/AuthCheck'
+import {HeartButton} from '../../components/HeartButton'
+import Link from 'next/link'
 
 interface IParams extends ParsedUrlQuery {
 	username: string
@@ -63,8 +66,15 @@ const Post: FC<PostProps> = (props) => {
 			</section>
 			<aside className='card'>
 				<p>
-					<strong>{post.heartCount || 0} ❤</strong>
+					<strong> {post.heartCount || 0} ❤</strong>
 				</p>
+				<AuthCheck fallback={
+					<Link href='/signup'>
+						<button>💗 Sign up</button>
+					</Link>
+				}>
+					<HeartButton postRef={postRef}/>
+				</AuthCheck>
 			</aside>
 		</main>
 	)

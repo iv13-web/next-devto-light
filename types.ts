@@ -1,4 +1,5 @@
 import firebase from 'firebase/app'
+import {Message, Validate, ValidationRule} from 'react-hook-form'
 
 export interface IUser extends Omit<firebase.User, 'photoURL'> {
 	username: string | null

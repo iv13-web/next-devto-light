@@ -43,7 +43,7 @@ export default function CreatePost() {
 			<input
 				value={title}
 				onChange={e => setTitle(e.target.value)}
-				placeholder='Print the name of your article'
+				placeholder='Print the name of your post'
 			/>
 			<button
 				type='submit'

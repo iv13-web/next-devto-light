@@ -3,6 +3,7 @@ import {useContext} from 'react'
 import {UserContext} from '../context/context'
 import {useRouter} from 'next/router'
 import {auth} from '../lib/firebase'
+import s from '../styles/Navbar.module.css'
 
 const Navbar = ({}) => {
 	const {user, username} = useContext(UserContext)
@@ -14,7 +15,7 @@ const Navbar = ({}) => {
 	}
 
 	return (
-		<nav className='navbar'>
+		<nav className={s.navbar}>
 			<ul>
 				<li>
 					<Link href='/'>
@@ -31,7 +32,7 @@ const Navbar = ({}) => {
 								<button className="btn-blue">Write Posts</button>
 							</Link>
 						</li>
-						<li className='avatar'>
+						<li className={s.avatar}>
 							<Link href={`/${username}`}>
 								<img src={user?.photoURL || '/hacker.png'}/>
 							</Link>

@@ -17,7 +17,7 @@ const PostItem: FC<Props> = ({post, admin = false}) => {
 
 	return (
 		<div
-			className='card'
+			className='card-clickable'
 			onClick={() => router.push(`/${post.username}/${post.slug}`)}
 		>
 			<Link href={`/${post.username}`}>

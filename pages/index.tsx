@@ -5,6 +5,7 @@ import {firestore, fromMillis, postToJSON} from '../lib/firebase'
 import {IPost} from '../types'
 import {useState} from 'react'
 import PostFeed from '../components/PostFeed'
+import {toast} from 'react-hot-toast'
 
 const LIMIT = 10
 
@@ -33,11 +34,14 @@ const Home: NextPage<Props> = (props) => {
 	const shouldShowBtn = !loading && !postsEnd
 
 	const getMorePosts = async () => {
+		if (!posts.length) {
+			return
+		}
 		setLoading(true)
 		const lastPost = posts[posts.length - 1]
-		const cursor = typeof lastPost.createdAt === 'number'
-			? fromMillis(lastPost.createdAt)
-			: lastPost.createdAt
+		const cursor = typeof lastPost?.createdAt === 'number'
+			? fromMillis(lastPost?.createdAt)
+			: lastPost?.createdAt
 
 		const query = firestore
 			.collectionGroup('posts')
@@ -49,7 +53,6 @@ const Home: NextPage<Props> = (props) => {
 		const newPosts: any[] = (await query.get()).docs.map(doc => doc.data())
 		setPosts(posts.concat(newPosts))
 		setLoading(false)
-
 		if (newPosts.length < LIMIT) {
 			setPostsEnd(true)
 		}

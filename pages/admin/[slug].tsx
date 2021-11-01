@@ -5,7 +5,7 @@ import {auth, firestore} from '../../lib/firebase'
 import {useDocumentDataOnce} from 'react-firebase-hooks/firestore'
 import PostForm from '../../components/PostForm'
 import Link from 'next/link'
-import s from './Admin.module.css'
+import s from '../../styles/Admin.module.css'
 
 const AdminPostEdit = ({}) => {
 
