@@ -6,6 +6,7 @@ import {useDocumentDataOnce} from 'react-firebase-hooks/firestore'
 import PostForm from '../../components/PostForm'
 import Link from 'next/link'
 import s from '../../styles/Admin.module.css'
+import DeletePostButton from '../../components/DeletePostButton'
 
 const AdminPostEdit = ({}) => {
 
@@ -51,6 +52,7 @@ function PostManager() {
 						<Link href={`/${post.username}/${post.slug}`}>
 							<button className="btn-blue">Live view</button>
 						</Link>
+						<DeletePostButton postRef={postRef} />
 					</aside>
 				</div>
 			}

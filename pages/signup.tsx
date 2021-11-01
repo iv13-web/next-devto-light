@@ -1,37 +1,25 @@
-import {FC, useContext} from 'react'
-import {auth, signInWithGoogle} from '../lib/firebase'
+import {FC, useContext, useEffect} from 'react'
 import {UserContext} from '../context/context'
 import UsernameForm from '../components/UsernameForm'
-import {Button} from '../components/UI/Button'
 import {SigninForm} from '../components/SigninForm'
+import {useRouter} from 'next/router'
 
-const Signup: FC = ({}) => {
+const Signup: FC = () => {
 	const {user, username} = useContext(UserContext)
+	const router = useRouter()
+
+	useEffect(() => {
+		username != null && router.push('/')
+	}, [username])
 
 	return (
 		<main>
-			{user
-				? !username ? <UsernameForm/> : <SignOutButton/> //сделать компонент регистрации внутри paper, а не только кнопку
+			{user && !username
+				? <UsernameForm/> //сделать компонент регистрации внутри paper, а не только кнопку
 				: <SigninForm/>
 			}
 		</main>
 	)
-}
-
-export function SignInButton() {
-	return (
-		<Button
-			className='btn-google'
-			onClick={signInWithGoogle}
-			image='/google.png'
-		>
-			Sign in with Google
-		</Button>
-	)
-}
-
-export function SignOutButton() {
-	return <Button onClick={auth.signOut}>Sign Out</Button>
 }
 
 export default Signup

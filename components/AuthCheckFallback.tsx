@@ -1,5 +1,5 @@
 import Paper from './UI/Paper'
-import {SignInButton} from '../pages/signup'
+import SignInButton from '../components/SignInButton'
 
 export default function AuthCheckFallback() {
   return (

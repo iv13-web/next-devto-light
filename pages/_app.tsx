@@ -12,7 +12,14 @@ export default function MyApp({Component, pageProps}: AppProps) {
 		<UserContext.Provider value={userData}>
 			<Navbar/>
 			<Component {...pageProps} />
-			<Toaster position='top-right' reverseOrder={false}/>
+			<Toaster
+				position='top-right'
+				reverseOrder={false}
+				containerStyle={{top: 60}}
+				toastOptions={{
+					duration: 5000
+				}}
+			/>
 		</UserContext.Provider>
 	)
 }

@@ -36,8 +36,21 @@ const PostItem: FC<Props> = ({post, admin = false}) => {
 				<span>
 					{wordCount} words / {minutesToRead} min
 				</span>
-				<span>💗 {post.heartCount} Hearts</span>
+				<span> 💗 {post.heartCount} Hearts</span>
 			</footer>
+			{admin && (
+				<>
+					<Link href={`/admin/${post.slug}`}>
+						<a onClick={stopPropagation}>
+							<button className="btn-blue">Edit</button>
+						</a>
+					</Link>
+					{post.published
+						? <p className="text-success">Published</p>
+						: <p className="text-danger">Unpublished</p>
+					}
+				</>
+			)}
 		</div>
 	)
 }

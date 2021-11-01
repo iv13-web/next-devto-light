@@ -1,12 +1,20 @@
-import {ChangeEvent, useState} from 'react'
+import {ChangeEvent, useEffect, useState} from 'react'
 import Loader from './Loader'
 import {auth, getUploadPercent, STATE_CHANGED, storage} from '../lib/firebase'
 import {toast} from 'react-hot-toast'
+import useUpdatedEffect from '../hooks/useUpdatedEffect'
 
 export default function ImageUploader() {
 	const [uploading, setUploading] = useState<boolean>(false)
 	const [progress, setProgress] = useState<string>('0')
 	const [downloadURL, setDownloadURL] = useState<string>()
+
+	useUpdatedEffect(() => {
+		toast('Please, do not forget to copy and paste ' +
+			'the generated link inside your post textarea', {
+			icon: '⚠'
+		})
+	}, [downloadURL])
 
 	const uploadFile = async (e: ChangeEvent<HTMLInputElement>) => {
 		// @ts-ignore
@@ -26,11 +34,6 @@ export default function ImageUploader() {
 					setDownloadURL(url)
 					setUploading(false)
 				})
-				.then(() => {
-					toast('Please, do not forget to copy and paste the generated link inside your post textarea', {
-						icon: '⚠'
-					})
-				})
 		}))
 	}
 
@@ -41,7 +44,7 @@ export default function ImageUploader() {
 			{!uploading &&
 				<>
 					<label htmlFor='image' className='btn'>
-						📷 Upload image
+						📷 Upload img
 						<input
 							id='image'
 							type='file'

@@ -9,6 +9,7 @@ type AuthCheckProps = {
 
 const AuthCheck: FC<AuthCheckProps> = ({children, fallback}) => {
 	const {username} = useContext(UserContext)
+
 	return username
 		? children
 		: fallback || <AuthCheckFallback/>

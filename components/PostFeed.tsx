@@ -7,7 +7,6 @@ type PostFeedProps = {
 	admin: boolean
 }
 
-// const PostFeed: ({posts, admin}: { posts: IPost[]; admin: boolean }) => (JSX.Element | null) = ({posts, admin}) => {
 const PostFeed: FC<PostFeedProps> = ({posts, admin}): (JSX.Element | null) => {
 
 	if (posts) {

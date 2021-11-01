@@ -28,7 +28,7 @@ export default function CreatePost() {
 			uid,
 			username,
 			published: false,
-			content: 'foobar',
+			content: '',
 			createdAt: serverTimestamp(),
 			updatedAt: serverTimestamp(),
 			heartCount: 0

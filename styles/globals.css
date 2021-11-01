@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap');
-@import '../vendor/modern-normalize.css';
 
 :root {
   --color-bg: #eef0f1;
@@ -13,12 +12,13 @@
   --color-gray: #b5bdc4;
   --color-gray-light: #cad5e1;
 
-  --header-height: 56px;
+  --header-height: 60px;
   --body-indent: 32px
 }
 
 html,
 body {
+  margin: 0;
   font-family: 'Noto Sans', sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -31,8 +31,12 @@ main {
 
 @media (max-width: 768px) {
   main {
-    padding: 1rem 4vw;
+    padding: 1rem 0;
   }
+}
+
+pre {
+  overflow: auto;
 }
 
 h1 {
@@ -52,6 +56,10 @@ h3 {
 
 * {
   box-sizing: border-box;
+}
+
+pre {
+  max-width: 700px;
 }
 
 img {
@@ -99,6 +107,11 @@ code {
   overflow-x: scroll;
 }
 
+.container {
+  max-width: calc(1100px + 20vw);
+  margin: 0 auto
+}
+
 
 /* Paper */
 .paper {
@@ -141,7 +154,7 @@ button:hover {
 
 button:disabled,
 button[disabled] {
-  filter: brightness(80%);
+  filter: grayscale(100%);
   cursor: not-allowed;
 }
 
@@ -199,6 +212,13 @@ button.btn-logo {
   transition: all .1s ease;
 }
 
+@media (max-width: 768px) {
+  .card, .card-clickable {
+    border-radius: 0;
+    padding: 1rem;
+  }
+}
+
 .card-clickable:hover {
   cursor: pointer;
   background-color: var(--color-gray-light);
@@ -212,7 +232,7 @@ button.btn-logo {
 .card-img-center {
   width: 20%;
   display: block;
-  margin: auto;
+  margin: 0 auto 12px;
   border-radius: 50%;
   max-width: 150px;
 }

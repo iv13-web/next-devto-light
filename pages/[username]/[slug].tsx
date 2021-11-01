@@ -56,7 +56,6 @@ type PostProps = {
 const Post: FC<PostProps> = (props) => {
 	const postRef = firestore.doc(props.path)
 	const [realtimePost] = useDocumentData(postRef)
-
 	const post = realtimePost || props.post
 
 	return (
